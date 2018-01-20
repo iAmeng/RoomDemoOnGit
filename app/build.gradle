@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.imeng.roomdemoongit"
         minSdkVersion 14
@@ -25,24 +25,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     /**
      * default
      */
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-
     /**
      * Add
      */
     //room
-    compile "android.arch.persistence.room:runtime:1.0.0-alpha5"
+    compile 'android.arch.persistence.room:runtime:1.0.0-alpha5'
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha5"
+    //rxjava2
+    compile 'android.arch.persistence.room:rxjava2:1.0.0-alpha5'
+    // 对于rxjava的支持库
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 }
