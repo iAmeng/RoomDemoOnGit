@@ -10,9 +10,27 @@ import android.arch.persistence.room.RoomDatabase;
  */
 
 //@Database(entities = {User.class}, version = 1, exportSchema = false)
-@Database(entities = {User.class, Score.class}, version = 2)
+@Database(
+        entities = {
+                User.class,
+                Score.class,
+                EntityNibp.class,
+                EntityPostSugar.class,
+                EntityPreSugar.class,
+                EntitySymptom.class,
+                EntityWaist.class,
+                EntityWalking.class,
+                EntityWeight.class
+        }, version = 3)
 public abstract class AppDataBase extends RoomDatabase {
     public abstract UserDao userDao();
-
     public abstract ScoreDao scoreDao();
+    public abstract DaoNibp mDaoNibp();
+    public abstract DaoPostSugar mDaoPostSugar();
+    public abstract DaoPreSugar mDaoPreSugar();
+    public abstract DaoSymptom mDaoSymptom();
+    public abstract DaoWaist mDaoWaist();
+    public abstract DaoWalking mDaoWalking();
+    public abstract DaoWeight mDaoWeight();
+
 }
